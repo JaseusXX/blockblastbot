@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f0f1a" />
+  <title>Block Blast</title>
+
+  <!-- Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+
+  <!-- Экран загрузки -->
+  <div id="screen-loading" class="screen active">
+    <div class="loading-content">
+      <div class="loading-logo">BB</div>
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Загрузка...</p>
+    </div>
+  </div>
+
+  <!-- Экран ошибки доступа -->
+  <div id="screen-no-access" class="screen">
+    <div class="glass-panel center-panel">
+      <h2 class="panel-title">Нет доступа</h2>
+      <p class="panel-text">Для игры необходимо купить доступ в боте.</p>
+      <button class="btn btn-primary" id="btn-close-no-access">Закрыть</button>
+    </div>
+  </div>
+
+  <!-- Главный экран игры -->
+  <div id="screen-game" class="screen">
+    <!-- Верхняя панель -->
+    <header class="game-header glass-bar">
+      <div class="score-group">
+        <span class="score-label">Счёт</span>
+        <span class="score-value" id="score-display">0</span>
+      </div>
+      <div class="title-group">
+        <span class="game-title">Block Blast</span>
+      </div>
+      <div class="score-group score-right">
+        <span class="score-label">Рекорд</span>
+        <span class="score-value" id="best-display">0</span>
+      </div>
+    </header>
+
+    <!-- Игровая сетка (Canvas) -->
+    <main class="game-main">
+      <canvas id="game-canvas"></canvas>
+    </main>
+
+    <!-- Лоток с фигурами (Canvas) -->
+    <section class="piece-tray">
+      <canvas id="tray-canvas"></canvas>
+    </section>
+  </div>
+
+  <!-- Экран Game Over -->
+  <div id="screen-gameover" class="screen">
+    <div class="glass-panel center-panel gameover-panel">
+      <h2 class="panel-title">Игра окончена</h2>
+      <div class="gameover-scores">
+        <div class="go-score-row">
+          <span class="go-label">Ваш счёт</span>
+          <span class="go-value" id="go-score">0</span>
+        </div>
+        <div class="go-score-row">
+          <span class="go-label">Рекорд</span>
+          <span class="go-value go-best" id="go-best">0</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="btn-restart">Играть снова</button>
+      <button class="btn btn-secondary" id="btn-close-game">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="static/js/game.js"></script>
+</body>
+</html>
